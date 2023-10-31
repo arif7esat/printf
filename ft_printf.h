@@ -23,7 +23,7 @@
 typedef struct s_printf
 {
 	int		lenght;
-	char	format;
+	char	frmt;
 	va_list	args;
 }			t_printf;
 
