@@ -6,7 +6,7 @@
 /*   By: agungor < agungor@student.42kocaeli.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 20:00:59 by agungor           #+#    #+#             */
-/*   Updated: 2023/10/31 15:47:38 by agungor          ###   ########.fr       */
+/*   Updated: 2023/10/31 20:47:29 by agungor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,35 @@ static int	ft_putstr(char *s, t_printf *prnt)
 			return (-1);
 		return (1);
 	}
+}
+
+static int	ft_itoa_base(u_int64_t n, int base, char *s, t_printf *prnt)
+{
+	char	mod;
+	char	str_num[50];
+	int		i;
+
+	i = 0;
+	mod = (prnt->frmt == 'i' || prnt->frmt == 'd') + 2 * (prnt->frmt == 'p');
+	if (mod == 1 && (int)n < 0)
+	{
+		n = -n;
+		if (ft_putchar('-', prnt) == -1)
+			return (-1);
+	}
+	else if (mod == 2 && ft_putstr("0x", prnt) == -1)
+		return (-1);
+	else if (!n && ft_putchar('0', prnt) == -1)
+		return (-1);
+	while (n)
+	{
+		str_num[i] = n % base + 48;
+		n /= base;
+	}
+	while (i--)
+		if (ft_putchar(str_num[i], prnt) == -1)
+			return (-1);
+	return (1);
 }
 
 static int	ft_format(t_printf *prnt)
