@@ -6,7 +6,7 @@
 /*   By: agungor < agungor@student.42kocaeli.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:56:07 by agungor           #+#    #+#             */
-/*   Updated: 2023/10/26 22:41:37 by agungor          ###   ########.fr       */
+/*   Updated: 2023/10/31 14:04:14 by agungor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <stdint.h>
 # include <unistd.h>
 
 # define DEC "0123456789"
