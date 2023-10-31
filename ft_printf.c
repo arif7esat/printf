@@ -6,7 +6,7 @@
 /*   By: agungor < agungor@student.42kocaeli.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 20:00:59 by agungor           #+#    #+#             */
-/*   Updated: 2023/10/31 20:47:29 by agungor          ###   ########.fr       */
+/*   Updated: 2023/10/31 20:53:39 by agungor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_putstr(char *s, t_printf *prnt)
 static int	ft_itoa_base(u_int64_t n, int base, char *s, t_printf *prnt)
 {
 	char	mod;
-	char	str_num[50];
+	char	str_num[30]; // U_INT64_T MAX =  18,446,744,073,709,551,615 bir dizide tuttuğumuzda maksimum bu dizi 21 elemanlı olmalı  10 tabanında 16 lık tabanda zaten basamak sayısı daha küçük oluyor. 
 	int		i;
 
 	i = 0;
