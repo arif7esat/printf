@@ -6,7 +6,7 @@
 /*   By: agungor < agungor@student.42kocaeli.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 20:00:59 by agungor           #+#    #+#             */
-/*   Updated: 2023/10/31 20:53:39 by agungor          ###   ########.fr       */
+/*   Updated: 2023/10/31 21:56:28 by agungor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ static int	ft_putstr(char *s, t_printf *prnt)
 	{
 		if (ft_putchar(*s, prnt) == -1)
 			return (-1);
-		return (1);
 	}
+	return (1);
 }
 
-static int	ft_itoa_base(u_int64_t n, int base, char *s, t_printf *prnt)
+static int	ft_itoa_base(u_int64_t n, char *s,  int base, t_printf *prnt)
 {
 	char	mod;
-	char	str_num[30]; // U_INT64_T MAX =  18,446,744,073,709,551,615 bir dizide tuttuğumuzda maksimum bu dizi 21 elemanlı olmalı  10 tabanında 16 lık tabanda zaten basamak sayısı daha küçük oluyor. 
+	int		str_num[30]; // U_INT64_T MAX =  18,446,744,073,709,551,615 bir dizide tuttuğumuzda maksimum bu dizi 21 elemanlı olmalı  10 tabanında 16 lık tabanda zaten basamak sayısı daha küçük oluyor. 
 	int		i;
 
 	i = 0;
@@ -53,7 +53,7 @@ static int	ft_itoa_base(u_int64_t n, int base, char *s, t_printf *prnt)
 		n /= base;
 	}
 	while (i--)
-		if (ft_putchar(str_num[i], prnt) == -1)
+		if (ft_putchar(s[str_num[i]], prnt) == -1)
 			return (-1);
 	return (1);
 }
@@ -63,7 +63,7 @@ static int	ft_format(t_printf *prnt)
 	if (prnt->frmt == '%')
 		return (ft_putchar('%', prnt));
 	else if (prnt->frmt == 'c')
-		return (ft_putchar(va_arg(prnt->args, char), prnt));
+		return (ft_putchar(va_arg(prnt->args, int), prnt));
 	else if (prnt->frmt == 's')
 		return (ft_putstr(va_arg(prnt->args, char *), prnt));
 	else if (prnt->frmt == 'd' || prnt->frmt == 'i')
